@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top right, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 50px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .emoji {
+      font-size: 2em;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .message {
+      font-size: 1.5em;
+      margin-top: 30px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .photos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .photos img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 5px solid white;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    /* Zoom Overlay */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 10px solid white;
+      border-radius: 20px;
+    }
+
+    /* Love Animation */
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      font-size: 24px;
+      animation: floatUp 5s linear infinite;
+      color: #ff4d6d;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.7; }
+      100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+	   /* Cake Animation */
+    .cake-container {
+      margin-top: 50px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .cake {
+      width: 300px;
+      height: 200px;
+      background-image: url('cake.jpg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      animation: cakeCutting 5s ease-in-out infinite;
+    }
+
+    .cake-slice {
+      position: absolute;
+      width: 0;
+      height: 100%;
+      background-color: #fff;
+      z-index: 2;
+      border-radius: 0 15px 15px 0;
+      left: 50%;
+      animation: sliceAnimation 3s forwards;
+    }
+	@keyframes sliceAnimation {
+      0% { width: 0; }
+      50% { width: 50%; }
+      100% { width: 0; }
+    }
+
+    @keyframes cakeCutting {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎂 Happy Birthday Arpayitri! 🎉😊</h1>
+  <div class="emoji">🎈🎁🎊</div>
+
+  <div class="message">
+    Wishing you a day filled with love, laughter,<br>and everything that makes you smile! <br> ❤️You are the prettiest person, I ever seen in my life.💛
+  </div>
+
+  <div class="photos">
+    <img src="C:\Users\HP\Downloads\WhatsApp Image 2025-05-07 at 22.43.32_f925a027.jpg" alt="C:\Users\HP\Downloads\WhatsApp Image 2025-05-07 at 22.43.32_f925a027.jpg" onclick="zoomPhoto(this)">
+    <img src="C:\Users\HP\Downloads\WhatsApp Image 2025-05-07 at 22.42.50_fb646663.jpg" alt="C:\Users\HP\Downloads\WhatsApp Image 2025-05-07 at 22.42.50_fb646663.jpg" onclick="zoomPhoto(this)">
+    <img src="C:\Users\HP\Downloads\WhatsApp Image 2025-05-07 at 22.42.31_5ce7d6ba.jpg" alt="C:\Users\HP\Downloads\WhatsApp Image 2025-05-07 at 22.42.31_5ce7d6ba.jpg" onclick="zoomPhoto(this)">
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closeZoom()">
+    <img id="zoomedImage" src="" alt="Zoomed">
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+      heart.innerText = '❤️';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function zoomPhoto(img) {
+      const overlay = document.getElementById('overlay');
+      const zoomedImage = document.getElementById('zoomedImage');
+      zoomedImage.src = img.src;
+      overlay.style.display = 'flex';
+    }
+
+    function closeZoom() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+	function closeZoom() {
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    function cutCake() {
+      const slice = document.createElement('div');
+      slice.classList.add('cake-slice');
+      document.querySelector('.cake').appendChild(slice);
+
+      setTimeout(() => {
+        slice.remove();
+      }, 3000); // Remove slice after animation
+    }
+  </script>
+</body>
+</html>
+
